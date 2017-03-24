@@ -1,12 +1,10 @@
 # SaltStack
 
-## Installation:
-
 ### Setting up the **hostname** for the **salt-master** node:
 ```
 echo "saltnode" > /etc/hostname
 ip_address=$(ip addr show eth0 | awk '$1 == "inet" {gsub(/\/.*$/, "", $2); print $2}')
-echo "$ip_address: $(hostname)" >> /etc/hosts
+echo "$ip_address $(hostname)" >> /etc/hosts
 ```
 
 ### Adding the SaltStack repository key:
@@ -57,3 +55,16 @@ salt-key -a saltnode
 salt-run manage.up
 salt 'saltnode' test.ping
 ```
+
+### Dealing with Salt States:
+1. Create the directory, where we are going to keep all the Salt states.
+```
+mkdir /srv/salt
+cd /srv/salt
+```
+2. Create the salt state **log.sls** for the **logger.sh** script in `/srv/salt` directory.
+3. Apply the Changes:
+```
+salt 'saltnode' state.apply log
+```
+4. Check the content of `/root/counts.log` file in every 30 minutes.
