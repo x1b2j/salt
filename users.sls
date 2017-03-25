@@ -9,7 +9,7 @@
   },
   'nitin': {
     'state': 'present',
-    'fullname': 'abhishek'
+    'fullname': 'nitin'
   }
 } %}
  
