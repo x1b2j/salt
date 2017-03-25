@@ -68,3 +68,9 @@ cd /srv/salt
 salt 'saltnode' state.apply log
 ```
 4. Check the content of `/root/counts.log` file in every 30 minutes.
+
+### Creating the Users:
+1. Create the salt state **users.sls** and apply it on the node.
+```
+salt 'saltnode' state.apply users
+```
